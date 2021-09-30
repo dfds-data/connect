@@ -18,3 +18,12 @@ jobs:
           command: "build"
           Dockerfile: "./${{ parameters.subfolder }}/Dockerfile"
           arguments: "-t ${{ parameters.subfolder }}:$(${{ parameters.subfolder }}.tag)"
+      - task: AWSShellScript@1
+        inputs:
+          awsCredentials: 'datadelivery-aws-deploy'
+          regionName: 'eu-central-1'
+          scriptType: 'inline'
+          inlineScript: |
+            aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/v1w7b9k4
+            docker tag ${{ parameters.subfolder }}:$(${{ parameters.subfolder }}.tag) public.ecr.aws/v1w7b9k4/${{ parameters.subfolder }}:$(${{ parameters.subfolder }}.tag)
+            docker push public.ecr.aws/v1w7b9k4/${{ parameters.subfolder }}:$(${{ parameters.subfolder }}.tag)
