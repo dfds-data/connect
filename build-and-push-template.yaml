@@ -27,3 +27,4 @@ jobs:
             aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/v1w7b9k4
             docker tag ${{ parameters.subfolder }}:$(${{ parameters.subfolder }}.tag) public.ecr.aws/v1w7b9k4/${{ parameters.subfolder }}:$(${{ parameters.subfolder }}.tag)
             docker push public.ecr.aws/v1w7b9k4/${{ parameters.subfolder }}:$(${{ parameters.subfolder }}.tag)
+        displayName: Push ${{ parameters.subfolder }} image
