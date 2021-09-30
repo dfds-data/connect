@@ -1,0 +1,10 @@
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+jobs:
+  - template: build-and-push-template.yaml
+    parameters:
+      - subfolder: connect

@@ -1,0 +1,20 @@
+parameters:
+  - name: subfolder
+    type: string
+    default: false
+
+jobs:
+  - job: ${{ parameters.subfolder }}
+    steps:
+      - bash: |
+          IMAGE_TAG=$(cat ./${{ parameters.subfolder }}/version)
+          echo $IMAGE_TAG
+          echo "##vso[task.setvariable variable=tag;isOutput=true]$IMAGE_TAG"
+        name: ${{ parameters.subfolder }}
+        displayName: get ${{ parameters.subfolder }} version
+      - task: Docker@2
+        displayName: Build ${{ parameters.subfolder }} image
+        inputs:
+          command: "build"
+          Dockerfile: "./${{ parameters.subfolder }}/Dockerfile"
+          arguments: "-t ${{ parameters.subfolder }}:$(${{ parameters.subfolder }}.tag)"
