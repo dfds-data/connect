@@ -8,6 +8,10 @@ This repo contains dockerfiles and CI/CD for our public docker images.
 
 This contains a docker image with the connectors that we use.
 
+### Schema Registry
+
+This contains a docker image with the Postgres driver.
+
 ## Updating images
 
 1. Make your changes to the image
@@ -15,7 +19,8 @@ This contains a docker image with the connectors that we use.
 
 ## Adding another image
 
-1. Create a subfolder with the files `Dockerfile` and `version`. `Dockerfile` will be your recipe
+1. Create a subfolder (name may only contain alphanumeric characters and underscores)
+   with the files `Dockerfile` and `version`. `Dockerfile` will be your recipe
    for building the image, and `version` will hold the image tag.
 2. Go to the AWS console and create a public ECR with the same name as the subfolder
 3. Add this to `azure-pipelines.yaml`:
