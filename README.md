@@ -8,6 +8,10 @@ This repo contains dockerfiles and CI/CD for our public docker images.
 
 This contains a docker image with the connectors that we use.
 
+### Schema Registry with Postgres Driver
+
+This contains a docker image with the Postgres driver.
+
 ## Updating images
 
 1. Make your changes to the image
