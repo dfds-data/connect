@@ -1,5 +1,5 @@
 trigger:
-- master
+  - master
 
 pool:
   vmImage: ubuntu-latest
@@ -10,4 +10,4 @@ jobs:
       subfolder: connect
   - template: build-and-push-template.yaml
     parameters:
-      subfolder: schema-registry-with-postgres-driver
+      subfolder: schemaregistry
