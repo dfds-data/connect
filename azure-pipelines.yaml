@@ -11,3 +11,6 @@ jobs:
   - template: build-and-push-template.yaml
     parameters:
       subfolder: schemaregistry
+  - template: build-and-push-template.yaml
+    parameters:
+      subfolder: connectonprem
